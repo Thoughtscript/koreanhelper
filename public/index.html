@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!--
     ********************************************************************************
@@ -25,6 +26,7 @@
     *                                   FAVICON                                    *
     ********************************************************************************
     -->
+    <!-- https://www.favicon.cc/?action=icon&file_id=979952 -->
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
     <!--
@@ -39,21 +41,51 @@
     *                                   CUSTOM SCRIPTS                            *
     ********************************************************************************
     -->
-
-    <script src="handwriting.js"></script>
-
+    <script src="writingpanel.js"></script>
 </head>
+
 <body>
-<main>
-    <!-- This must be initialized with width and height! -->
-    <canvas id="handwriting" width="250px" height="250px"></canvas>
-</main>
+    <header>
+        <h1>한국인 도우미</h1>
+    </header>
+    <main>
+        <div class="panelWrapper">
+            <!-- These must be initialized with width and height! -->
+            <canvas class="hw" id="a" width="250px" height="250px"></canvas>
+            <canvas class="hw" id="b" width="250px" height="250px"></canvas>
+            <canvas class="hw" id="c" width="250px" height="250px"></canvas>
+            <canvas class="hw" id="d" width="250px" height="250px"></canvas>
+        </div>
+        <button id="reset">Reset</button>
+    </main>
 
-<!--
-********************************************************************************
-*                                   CUSTOM SCRIPTS                            *
-********************************************************************************
--->
+    <!--
+    ********************************************************************************
+    *                                   CUSTOM SCRIPTS                            *
+    ********************************************************************************
+    -->
+    <script>
+        window.onload = () => {
+            const hwA = new WritingPanel(document.querySelectorAll('canvas#a.hw'))
+            hwA.init()
 
+            const hwB = new WritingPanel(document.querySelectorAll('canvas.hw#b'))
+            hwB.init()
+
+            const hwC = new WritingPanel(document.querySelectorAll('canvas.hw#c'))
+            hwC.init()
+
+            const hwD = new WritingPanel(document.querySelectorAll('canvas.hw#d'))
+            hwD.init()
+
+            document.getElementById('reset').addEventListener('click', e => {
+                hwA.clear()
+                hwB.clear()
+                hwC.clear()
+                hwD.clear()
+            })
+        }
+    </script>
 </body>
+
 </html>

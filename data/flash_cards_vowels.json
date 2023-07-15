@@ -1,0 +1,62 @@
+{
+    "ㅏ": {
+        "koreanname": "아",
+        "ipa": "/a/",
+        "rr": "a",
+        "mccr": "a"
+    },
+    "ㅑ": {
+        "koreanname": "야",
+        "ipa": "",
+        "rr": "",
+        "mccr": ""
+    },
+    "ㅓ": {
+        "koreanname": "아",
+        "ipa": "",
+        "rr": "",
+        "mccr": ""
+    },
+    "ㅕ": {
+        "koreanname": "여",
+        "ipa": "",
+        "rr": "",
+        "mccr": ""
+    },
+    "ㅗ": {
+        "koreanname": "오",
+        "ipa": "",
+        "rr": "",
+        "mccr": ""
+    }, 
+    "ㅛ": {
+        "koreanname": "요",
+        "ipa": "",
+        "rr": "",
+        "mccr": ""
+    },
+    "ㅜ": {
+        "koreanname": "우",
+        "ipa": "",
+        "rr": "",
+        "mccr": ""
+    }, 
+    "ㅠ": {
+        "koreanname": "유",
+        "ipa": "",
+        "rr": "",
+        "mccr": ""
+    },
+    "ㅡ": {
+        "koreanname": "으",
+        "ipa": "",
+        "rr": "",
+        "mccr": ""
+    }, 
+    "ㅣ": {
+        "koreanname": "이",
+        "ipa": "",
+        "rr": "",
+        "mccr": ""
+    }
+}
