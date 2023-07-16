@@ -32,7 +32,6 @@ WritingPanel.prototype.drawLine = function (startX, startY, endX, endY) {
     this.context.beginPath()
     this.context.moveTo(startX, startY)
     this.context.lineTo(endX, endY)
-    this.context.lineWidth = 1
     this.context.stroke()
     this.context.closePath()
 }
@@ -51,6 +50,7 @@ WritingPanel.prototype.init = function () {
         this.context.strokeStyle = 'red'
         this.context.lineCap = 'round'
         this.context.lineJoin = 'round'
+        this.context.lineWidth = 1
         this.initialized = !this.initialized
 
         this.el.addEventListener('mousedown', e => {
