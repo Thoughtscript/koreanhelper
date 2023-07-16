@@ -56,15 +56,18 @@ header>h1 {
     font-family: 'Noto Sans KR', sans-serif;
 }
 
-button#reset {
+a.btn#reset {
     position: relative;
     top: 700px;
     right: 650px;
-    height: 65px;
-    width: 220px;
+    padding-top:5px;
+    padding-bottom:15px;
+    padding-left: 55px;
+    padding-right:55px;
+    height: 51px;
     border: 1px solid #F220A3;
     color: white;
-    line-height:10px;
+    text-decoration: none;
     background: #F220A3;
     font-size: 35px;
     font-weight: 600;
@@ -73,7 +76,7 @@ button#reset {
     font-family: 'Noto Sans KR', sans-serif;
 }
 
-button#reset:hover {
+a.btn:hover {
     opacity: .8;
     box-shadow: 0px 0px 0px 0px white;
 }
