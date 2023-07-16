@@ -41,6 +41,10 @@ WritingPanel.prototype.toBlobRect = function() {
     // For generating CNN images
 }
 
+WritingPanel.prototype.toPng = function() {
+    return this.el.toDataURL("image/png")
+}
+
 WritingPanel.prototype.init = function () {
     if (!this.initialized) {
 
