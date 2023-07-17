@@ -50,7 +50,7 @@ WritingPanel.prototype.init = function () {
         this.context.strokeStyle = 'red'
         this.context.lineCap = 'round'
         this.context.lineJoin = 'round'
-        this.context.lineWidth = 1
+        this.context.lineWidth = 5
         this.initialized = !this.initialized
 
         this.el.addEventListener('mousedown', e => {

@@ -7,7 +7,7 @@ if __name__ == '__main__':
     try:
 
         MAIN_IMAGE_DIR = 'G:\_active\koreanhelper\data\cnn_images'
-        RESIZED_IMAGE_SIZE = 28
+        RESIZED_IMAGE_SIZE = 800
         CLASS_MAPPINGS_FILE = open('G:\_active\koreanhelper\data\cnn_image_mappings.json')
         CLASS_MAPPINGS = json.load(CLASS_MAPPINGS_FILE)
 
@@ -34,18 +34,22 @@ if __name__ == '__main__':
                 tf.keras.layers.Flatten(input_shape=(RESIZED_IMAGE_SIZE, RESIZED_IMAGE_SIZE)),
                 tf.keras.layers.Dense(128, activation='relu'),
                 tf.keras.layers.Dense(256, activation='relu'),
+                tf.keras.layers.Dense(512, activation='relu'),
+                 tf.keras.layers.Dense(1024, activation='relu'),
+                 tf.keras.layers.Dense(512, activation='relu'),
+                tf.keras.layers.Dense(256, activation='relu'),
                 tf.keras.layers.Dense(128, activation='relu'),
                 tf.keras.layers.Dense(64),
-                tf.keras.layers.Dense(10)
+                tf.keras.layers.Dense(RESIZED_IMAGE_SIZE)
             ])
 
             model.compile(
-                optimizer='adam',
+                optimizer=tf.keras.optimizers.Adam(learning_rate=1e-3),
                 loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
                 metrics=['accuracy']
             )
 
-            model.fit(dataset, epochs=100, use_multiprocessing=True)
+            model.fit(dataset, epochs=500, use_multiprocessing=True)
 
             print("\n\n*************************************************************************************************************\n\n")
             return model

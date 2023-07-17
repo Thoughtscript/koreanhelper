@@ -55,6 +55,7 @@
             <canvas class="hw" id="b" width="250px" height="250px"></canvas>
             <canvas class="hw" id="c" width="250px" height="250px"></canvas>
             <canvas class="hw" id="d" width="250px" height="250px"></canvas>
+            <canvas class="hw" id="e" width="250px" height="250px"></canvas>
         </div>
         <a href="#" class="btn" id="reset">Reset</a>
     </main>
@@ -78,11 +79,15 @@
             const hwD = new WritingPanel(document.querySelectorAll('canvas.hw#d'))
             hwD.init()
 
+            const hwE = new WritingPanel(document.querySelectorAll('canvas.hw#d'))
+            hwE.init()
+
             document.getElementById('reset').addEventListener('click', e => {
                 hwA.clear()
                 hwB.clear()
                 hwC.clear()
                 hwD.clear()
+                hwE.clear()
             })
         }
     </script>
