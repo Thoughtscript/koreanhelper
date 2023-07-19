@@ -8,11 +8,19 @@
  *  Helpful examples for drawing circles and curved lines: https://github.com/os1ma/handwriting-canvas/blob/main/LICENSE
  */
 
+const reset = that => {
+    that.context.strokeStyle = 'red'
+    that.context.lineCap = 'round'
+    that.context.lineJoin = 'round'
+    that.context.lineWidth = 5
+}
+
 var WritingPanel = function (els) {
     this.lastX = 0
     this.lastY = 0
     this.isDown = false
     this.initialized = false
+    this.isEraser = false
 
     if (els.length > 1) new Error("Element not uniquely specified!")
 
@@ -41,16 +49,41 @@ WritingPanel.prototype.toBlobRect = function() {
 }
 
 WritingPanel.prototype.toPng = function() {
+    let img = this.context.getImageData(0,0,2500,2500)
+    for (let i = 0; i < img.data.length; i+= 4) {
+        let r = img.data[i]
+        let g = img.data[i+1]
+        let b = img.data[i+2]
+        let a = img.data[i+3]
+
+        if (r === 255 && g === 255 && b === 255) {
+            img.data[i] = 255
+            img.data[i+1] = 255
+            img.data[i+2] = 255
+            img.data[i+3] = 0
+        }
+    }
+
+    this.context.putImageData(img, 0, 0)
     return this.el.toDataURL("image/png")
+}
+
+WritingPanel.prototype.erase = function() {
+
+    this.isEraser = !this.isEraser
+
+    if (this.isEraser) {
+        this.context.strokeStyle = 'white'
+        this.context.lineCap = 'round'
+        this.context.lineJoin = 'round'
+        this.context.lineWidth = 15
+    
+    } else reset(this)
 }
 
 WritingPanel.prototype.init = function () {
     if (!this.initialized) {
-
-        this.context.strokeStyle = 'red'
-        this.context.lineCap = 'round'
-        this.context.lineJoin = 'round'
-        this.context.lineWidth = 5
+        reset(this)
         this.initialized = !this.initialized
 
         this.el.addEventListener('mousedown', e => {
@@ -81,5 +114,10 @@ WritingPanel.prototype.init = function () {
 }
 
 WritingPanel.prototype.clear = function() {
-    this.context.clearRect(0, 0, this.context.canvas.width, this.context.canvas.height)
+    this.context.clearRect(
+        0, 
+        0, 
+        this.context.canvas.width, 
+        this.context.canvas.height
+    )
 }

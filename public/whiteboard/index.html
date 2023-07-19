@@ -46,7 +46,7 @@
 
 <body>
     <header>
-        <h1>한국인 도우미</h1>
+        <h1>한국어 도우미</h1>
     </header>
     <main>
         <div class="panelWrapper">
@@ -55,6 +55,7 @@
         </div>
         <a href="#" class="btn" id="reset">Clear</button>
         <a href="#" class="btn" id="save">Save</a>
+        <a href="#" class="btn" id="erase">Erase</a>
     </main>
 
     <!--
@@ -76,6 +77,10 @@
                 el.setAttribute('download', 'whiteboard.png')
                 el.setAttribute('href', hwA.toPng().replace("image/png", "image/octet-stream"))
                 el.click()
+            })
+
+            document.getElementById('erase').addEventListener('click', e => {
+                hwA.erase()
             })
         }
     </script>

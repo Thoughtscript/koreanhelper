@@ -84,3 +84,9 @@ a.btn#save {
     background: #4D1DBC;
     border: 1px solid #4D1DBC;
 }
+
+a.btn#erase {
+    left: 120px;
+    background: #F220A3;
+    border: 1px solid #F220A3;
+}
