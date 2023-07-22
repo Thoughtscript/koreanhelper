@@ -13,6 +13,7 @@ const reset = that => {
     that.context.lineCap = 'round'
     that.context.lineJoin = 'round'
     that.context.lineWidth = 5
+    that.isEraser = false
 }
 
 var WritingPanel = function (els) {
@@ -50,11 +51,11 @@ WritingPanel.prototype.toBlobRect = function() {
 
 WritingPanel.prototype.toPng = function() {
     let img = this.context.getImageData(0,0,2500,2500)
+
     for (let i = 0; i < img.data.length; i+= 4) {
         let r = img.data[i]
         let g = img.data[i+1]
         let b = img.data[i+2]
-        let a = img.data[i+3]
 
         if (r === 255 && g === 255 && b === 255) {
             img.data[i] = 255
@@ -120,4 +121,5 @@ WritingPanel.prototype.clear = function() {
         this.context.canvas.width, 
         this.context.canvas.height
     )
+    reset(this)
 }
